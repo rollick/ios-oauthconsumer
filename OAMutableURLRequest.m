@@ -132,10 +132,8 @@ signatureProvider:(id<OASignatureProviding>)aProvider
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     [NSMakeCollectable(theUUID) autorelease];
-	if (nonce) {
-		CFRelease(nonce);
-	}
-    nonce = (NSString *)string;
+    self.nonce = [[(NSString *)string copy] autorelease];
+    CFRelease(string);
 }
 
 NSInteger normalize(id obj1, id obj2, void *context)

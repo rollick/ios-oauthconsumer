@@ -44,7 +44,7 @@
     NSString *timestamp;
 }
 @property(readonly) NSString *signature;
-@property(readonly) NSString *nonce;
+@property(nonatomic, retain) NSString *nonce;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer
