@@ -61,7 +61,7 @@
 		self.session = aSession;
 		self.duration = aDuration;
 		self.attributes = theAttributes;
-		created = [creation retain];
+		created = creation;
 		renewable = renew;
 		forRenewal = NO;
 	}
@@ -139,13 +139,7 @@
 #pragma mark dealloc
 
 - (void)dealloc {
-    self.key = nil;
-    self.secret = nil;
-	self.session = nil;
-    self.duration = nil;
-    self.verifier = nil;
     self.attributes = nil;
-	[super dealloc];
 }
 
 #pragma mark settings
@@ -204,7 +198,6 @@
 }
 
 - (void)setAttributes:(NSDictionary *)theAttributes {
-	[attributes release];
 	if (theAttributes) {
 		attributes = [[NSMutableDictionary alloc] initWithDictionary:theAttributes];
 	}else {
@@ -227,7 +220,6 @@
 		[chunks addObject:[NSString stringWithFormat:@"%@:%@", aKey, [attributes objectForKey:aKey]]];
 	}
 	NSString *attrs = [chunks componentsJoinedByString:@";"];
-	[chunks release];
 	return attrs;
 }
 
@@ -243,7 +235,7 @@
 
 - (NSDictionary *)parameters
 {
-	NSMutableDictionary *params = [[[NSMutableDictionary alloc] init] autorelease];
+	NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
 	if (key) {
 		[params setObject:key forKey:@"oauth_token"];
@@ -346,7 +338,7 @@
 		NSArray *elements = [pair componentsSeparatedByString:@":"];
 		[dct setObject:[elements objectAtIndex:1] forKey:[elements objectAtIndex:0]];
 	}
-	return [dct autorelease];
+	return dct;
 }
 
 #pragma mark description

@@ -25,10 +25,10 @@
 @class OAServiceTicket;
 
 @interface OACall : NSObject {
-	NSURL *url;
-	NSString *method;
-	NSArray *parameters;
-	NSDictionary *files;
+	NSURL *__unsafe_unretained url;
+	NSString *__unsafe_unretained method;
+	NSArray *__unsafe_unretained parameters;
+	NSDictionary *__unsafe_unretained files;
 	NSObject <OACallDelegate> *delegate;
 	SEL finishedSelector;
 	OADataFetcher *fetcher;
@@ -40,7 +40,7 @@
 @property(readonly) NSString *method;
 @property(readonly) NSArray *parameters;
 @property(readonly) NSDictionary *files;
-@property(nonatomic, retain) OAServiceTicket *ticket;
+@property(nonatomic, strong) OAServiceTicket *ticket;
 
 - (id)init;
 - (id)initWithURL:(NSURL *)aURL;
