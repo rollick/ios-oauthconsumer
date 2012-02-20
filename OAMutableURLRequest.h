@@ -38,12 +38,11 @@
     OAConsumer *consumer;
     OAToken *token;
     NSString *realm;
-    NSString *__unsafe_unretained signature;
     id<OASignatureProviding> signatureProvider;
     NSString *timestamp;
 }
-@property(readonly) NSString *signature;
-@property(nonatomic, strong) NSString *nonce;
+@property (unsafe_unretained) NSString *signature;
+@property (nonatomic, strong) NSString *nonce;
 
 - (id)initWithURL:(NSURL *)aUrl
 		 consumer:(OAConsumer *)aConsumer

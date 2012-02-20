@@ -28,17 +28,15 @@
 #import "OAMutableURLRequest.h"
 
 
-@interface OAServiceTicket : NSObject {
+@interface OAServiceTicket : NSObject 
+{
 @private
-    OAMutableURLRequest *__unsafe_unretained request;
-    NSURLResponse *__unsafe_unretained response;
-	NSData *__unsafe_unretained data;
-    BOOL didSucceed;
 }
-@property(readonly) OAMutableURLRequest *request;
-@property(readonly) NSURLResponse *response;
-@property(readonly) NSData *data;
-@property(readonly) BOOL didSucceed;
+
+@property(unsafe_unretained) OAMutableURLRequest *request;
+@property(unsafe_unretained) NSURLResponse *response;
+@property(unsafe_unretained) NSData *data;
+@property(unsafe_unretained) BOOL didSucceed;
 @property(unsafe_unretained, readonly) NSString *body;
 
 - (id)initWithRequest:(OAMutableURLRequest *)aRequest response:(NSURLResponse *)aResponse data:(NSData *)aData didSucceed:(BOOL)success;

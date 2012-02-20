@@ -25,21 +25,16 @@
 @class OAServiceTicket;
 
 @interface OACall : NSObject {
-	NSURL *__unsafe_unretained url;
-	NSString *__unsafe_unretained method;
-	NSArray *__unsafe_unretained parameters;
-	NSDictionary *__unsafe_unretained files;
 	NSObject <OACallDelegate> *delegate;
 	SEL finishedSelector;
 	OADataFetcher *fetcher;
 	OAMutableURLRequest *request;
-	OAServiceTicket *ticket;
 }
 
-@property(readonly) NSURL *url;
-@property(readonly) NSString *method;
-@property(readonly) NSArray *parameters;
-@property(readonly) NSDictionary *files;
+@property (unsafe_unretained) NSURL *url;
+@property (unsafe_unretained) NSString *method;
+@property (unsafe_unretained) NSArray *parameters;
+@property (unsafe_unretained) NSDictionary *files;
 @property(nonatomic, strong) OAServiceTicket *ticket;
 
 - (id)init;
